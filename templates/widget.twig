@@ -1,0 +1,49 @@
+<div class="ddbottracker-widget">
+	{% if evolution.bots is defined and evolution.bots is not null %}
+		{% if evolution.bots.raw > 0 %}
+			{% set evolutionBotsClass = 'evolutionBadge--positive' %}
+			{% set arrowBots = '<path d="M3.77344 11L8.27344 5L12.7734 11H3.77344Z" fill="currentColor"></path>' %}
+		{% elseif evolution.bots.raw < 0 %}
+			{% set evolutionBotsClass = 'evolutionBadge--negative' %}
+			{% set arrowBots = '<path d="M3.77344 6L8.27344 12L12.7734 6H3.77344Z" fill="currentColor"></path>' %}
+		{% else %}
+			{% set evolutionBotsClass = 'evolutionBadge--neutral' %}
+			{% set arrowBots = '<rect x="3" y="7" width="10" height="2" fill="currentColor"></rect>' %}
+		{% endif %}
+{% endif %}
+	<div class="metricValue metricValue--fixedHeight">
+		<div class="metricValue__title" title="{{ 'DDBotTracker_Widget_BotsVsVisitors_Bots_Desc'|translate }}">{{ 'DDBotTracker_Widget_BotsVsVisitors_Bots'|translate }}</div>
+		<div class="metricValue__primary">
+			<span class="metricValue__number" title="{{ bots.actions ?? '-' }}">{{ bots.actions ?? '-' }}</span>
+			<span class="evolutionBadge {{ evolutionBotsClass ?? '' }}" title="{{ tooltip.bots ?? '' }}">
+				<span class="evolutionBadge__icon" aria-hidden="true"><svg viewBox="0 0 16 16" class="evolutionTrendIcon">{{ arrowBots|raw }}</svg></span>
+				<span class="evolutionBadge__value">{{ evolution.bots.formatted ?? '-' }}</span>
+			</span>
+		</div>
+		<div class="metricValue__secondary"><span class="metricValue__secondaryLine">{{ bots.uniques ?? '-' }}</span></div>
+	</div>
+	{% if evolution.visitors is defined and evolution.visitors is not null %}
+		{% if evolution.visitors.raw > 0 %}
+			{% set evolutionVisitorsClass = 'evolutionBadge--positive' %}
+			{% set arrowVisitors = '<path d="M3.77344 11L8.27344 5L12.7734 11H3.77344Z" fill="currentColor"></path>' %}
+		{% elseif evolution.visitors.raw < 0 %}
+			{% set evolutionVisitorsClass = 'evolutionBadge--negative' %}
+			{% set arrowVisitors = '<path d="M3.77344 6L8.27344 12L12.7734 6H3.77344Z" fill="currentColor"></path>' %}
+		{% else %}
+			{% set evolutionBotsClass = 'evolutionBadge--neutral' %}
+			{% set arrowVisitors = '<rect x="3" y="7" width="10" height="2" fill="currentColor"></rect>' %}
+		{% endif %}
+	{% endif %}
+	<div class="metricValue metricValue--fixedHeight">
+		<div class="metricValue__title" title="{{ 'General_ColumnNbActionsDocumentation'|translate }}">{{ 'DDBotTracker_Widget_BotsVsVisitors_Visitors'|translate }}</div>
+		<div class="metricValue__primary">
+			<span class="metricValue__number" title="{{ visitors.actions ?? '-' }}">{{ visitors.actions ?? '-' }}</span>
+			<span class="evolutionBadge {{ evolutionVisitorsClass ?? '' }}" title="{{ tooltip.visitors ?? '' }}">
+				<span class="evolutionBadge__icon" aria-hidden="true"><svg viewBox="0 0 16 16" class="evolutionTrendIcon">{{ arrowVisitors|raw }}</svg></span>
+				<span class="evolutionBadge__value">{{ evolution.visitors.formatted ?? '-' }}</span>
+			</span>
+		</div>
+		<div class="metricValue__secondary"><span class="metricValue__secondaryLine">{{ visitors.uniques ?? '-' }}</span></div>
+	</div>
+</div>
+
