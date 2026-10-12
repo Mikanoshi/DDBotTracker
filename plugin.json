@@ -1,7 +1,7 @@
 {
 	"name": "DDBotTracker",
 	"description": "Separate tracking of parsers, crawlers, scrapers and any other bots supported by Matomo's built-in DeviceDetector.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"theme": false,
 	"license": "GPL v3+",
 	"authors": [
