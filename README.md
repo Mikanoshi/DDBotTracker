@@ -27,5 +27,5 @@ This will disable default Matomo's bot filtering. Plugin uses Matomo's bot detec
 ## Requirements
 
 - Matomo 5.x
-- PHP 7.2.5+
+- PHP 8.1.0+
 - MySQL 8.0+ or MariaDB 10.6+
